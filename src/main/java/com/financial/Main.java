@@ -1,6 +1,16 @@
+
 package src.main.java.com.financial;
 
-import java.util.ArrayList;
+import src.main.java.com.financial.controller.MenuController;
+
+public class Main {
+    public static void main(String[] args) {
+        MenuController.iniciar();
+    }
+}
+
+
+/*import java.util.ArrayList;
 import java.util.Scanner;
 
 import src.main.java.com.financial.model.Conta;
@@ -220,11 +230,4 @@ public static void transferirFundos() {
 
     System.out.println("Transferência realizada com sucesso.");
 }
-}
-
-
-
-
-
-
-}
+}*/

@@ -58,50 +58,24 @@ public class Conta {
         return saldo;
     }
 
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+
+        }
+
     public List<Transaction> getTransacoes() {
+       return transacoes;
+    }
+
+    public List<Transaction> setTransacoes(List<Transaction> transacoes) {
         return transacoes;
     }
 
-    public void depositar(double valor) {
-        if (valor > 0) {
-            saldo += valor;
-            System.out.println("Depósito realizado com sucesso.");
-        } else {
-            System.out.println("Valor inválido para depósito.");
-        }
-    }
-
-    public void sacar(double valor) {
-        if (valor > 0 && saldo >= valor) {
-            saldo -= valor;
-            System.out.println("Saque realizado com sucesso.");
-        } else {
-            System.out.println("Saldo insuficiente ou valor inválido.");
-        }
-    }
-
-    public void transferir(Conta destino, double valor) {
-        if (valor > 0 && saldo >= valor) {
-            this.saldo -= valor;
-            destino.saldo += valor;
-            System.out.println("Transferência realizada com sucesso.");
-        } else {
-            System.out.println("Transferência inválida.");
-        }
-    }
-
-    public void adicionarTransacao(Transaction t) {
-        transacoes.add(t);
-        if (t.getTipo().equalsIgnoreCase("Receita")) {
-            saldo += t.getValor();
-        } else {
-            saldo -= t.getValor();
-        }
-    }
-
-    @Override
+        @Override
     public String toString() {
         return "Conta #" + idConta + " - Banco: " + banco + " | Agência: " + agencia + "-" + numero +
                " | Saldo: " + formatoValores.format(saldo);
     }
+
+
 }

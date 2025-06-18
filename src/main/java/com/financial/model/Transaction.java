@@ -49,6 +49,7 @@ public class Transaction {
         return conta;
     }
 
+    
     @Override
     public String toString() {
         return "Transação #" + idTransacao + " | " + tipo + " | " + categoria + " | " + descricao +
