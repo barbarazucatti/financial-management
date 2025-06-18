@@ -1,18 +1,24 @@
 # Financial management
-  ## Summary
-In this project, I create a simple financial manager, an idea that came from the challenge of a selection process in which I participated.
-Here I share my initial skills in Java and, mainly, my way of solving the proposed problems.
+  ## 📌 About the Project
+In this project, I create a simple financial manager developed as part of a recruitment challenge I participated in. Here, I share my problem-solving approach and my initial Java skills, focusing on concepts such as class creation, inheritance, and polymorphism.
 
-  ## Contet
-The financial manager is a program that allows the user to browse their accounts in different banks, consulting, editing and carrying out transactions.
+  ## 🧭 Features
+The program simulates a personal financial management system where the user can:
 
-  ### Interactive Menu
-The user's first contact with the program is an interactive menu that shows some options for actions. In response to the chosen action, the user will be taken to different menus with another set of actions available.
-#### Menu Option:
-- Account manager: the user will be able to create a new account, delete an existing account and merge transactions between two existing accounts.
-- Transfer manager: the user will be able to see the summary of his chosen account, add a new transaction or edit an existing one, and transfer funds from one account to another.
-- General panel: the user will be able to see the summary of all his accounts, the summary of the expenses and income of the chosen month, and see the general balance of the last 6 months and see the expense by category (food, housing, etc.)
+- Navigate between accounts in different banks;
+- View, edit, and conduct transactions;
+- Track expenses and income by category and time period.
 
-  ## Techs
-* Java: in this project i explored class creation and inheritance and polymorphism.
- 
+## 📂 Interactive Menu
+The interaction is carried out via an interactive command-line menu, allowing the user to select an action and be redirected to specific menus with more options.
+
+#### Main Menu:
+- **Account Manager:** the user will be able to create a new account, delete an existing account and merge transactions between two existing accounts.
+- **Transfer Manager:** the user will be able to see the summary of his chosen account, add a new transaction or edit an existing one, and transfer funds from one account to another.
+- **General Dashboard:** the user will be able to see the summary of all his accounts, the summary of the expenses and income of the chosen month, and see the general balance of the last 6 months and see the expense by category (food, housing, etc.)
+
+## 🛠️ Techs
+* **Java:** object-oriented concepts such as encapsulation, inheritance, and polymorphism, along with practice in control structures and organization using multiple classes.
+
+## 📝 Final Considerations
+Working on this project was a fantastic chance to sharpen my programming skills and get a feel for how a basic financial system works. While it doesn't include a database or a graphical interface, it's a solid starting point with lots of room for future upgrades.
