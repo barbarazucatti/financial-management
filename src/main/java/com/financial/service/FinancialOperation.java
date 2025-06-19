@@ -7,7 +7,7 @@ import src.main.java.com.financial.model.Transaction;
 
 public class FinancialOperation {
 
-     public static void depositar(Conta conta, double valor) {
+    public static void depositar(Conta conta, double valor) {
         if (valor > 0) {
             conta.setSaldo(conta.getSaldo() + valor);
             System.out.println("Depósito realizado com sucesso.");
@@ -24,6 +24,7 @@ public class FinancialOperation {
             System.out.println("Saldo insuficiente ou valor inválido.");
         }
     }
+
     public static void transferir(Conta origem, Conta destino, double valor) {
         if (valor > 0 && origem.getSaldo() >= valor) {
             origem.setSaldo(origem.getSaldo() - valor);
@@ -44,5 +45,5 @@ public class FinancialOperation {
         } else {
             conta.setSaldo(conta.getSaldo() - t.getValor());
         }
-    }    
+    }
 }

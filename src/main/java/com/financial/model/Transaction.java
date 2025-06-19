@@ -21,6 +21,9 @@ public class Transaction {
         this.conta = conta;
     }
 
+    public Transaction(int idTransacao, double valor, int j, String tipo, String categoria, String descricao) {
+    }
+
     public int getIdTransacao() {
         return idTransacao;
     }

@@ -8,7 +8,7 @@ import java.util.List;
 public class Conta {
     private static int contadorContas = 1;
 
-    private int idConta;
+    private static int idConta;
     private String banco;
     private int agencia;
     private int numero;
@@ -26,7 +26,11 @@ public class Conta {
         this.transacoes = new ArrayList<>();
     }
 
-    public int getIdConta() {
+    public Conta(int contadorContas, String banco, int agencia, int numero, double saldo,
+            ArrayList<Transaction> arrayList) {
+    }
+
+    public static int getIdConta() {
         return idConta;
     }
 
