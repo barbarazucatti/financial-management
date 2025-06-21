@@ -6,7 +6,11 @@ import java.util.List;
 import java.text.SimpleDateFormat;
 
 import src.main.java.com.financial.model.*;
-import src.main.java.com.financial.service.*;
+import src.main.java.com.financial.operations.*;
+import src.main.java.com.financial.operations.contas.AccountOperations;
+import src.main.java.com.financial.operations.contas.Deposito;
+import src.main.java.com.financial.operations.contas.Saque;
+import src.main.java.com.financial.operations.contas.Transferencia;
 import src.main.java.com.financial.utils.*;
 
 public class MenuController {
@@ -98,37 +102,9 @@ public class MenuController {
             }
         } while (escolha != 4);
     }
-
-    public static Conta novaConta() {
-        System.out.println("Você está criando uma nova conta");
-        System.out.println();
-
-        entrada.nextLine(); // Limpar buffer
-
-        System.out.println("Digite o banco da sua conta:");
-        String banco = entrada.nextLine();
-
-        System.out.println("Digite a sua agência:");
-        int agencia = entrada.nextInt();
-
-        System.out.println("Digite o número da conta:");
-        int numero = entrada.nextInt();
-
-        double saldo = 0;
-
-        Conta novaConta = new Conta(contadorContas, banco, agencia, numero, saldo, new ArrayList<Transaction>());
-        contadorContas++;
-
-        contas.add(novaConta);
-        System.out.println("Sua nova conta foi criada!");
-        System.out.println("Conta criada: " + novaConta);
-
-        for (Conta conta : contas) {
-            System.out.println("Lista de contas: " + conta);
-        }
-
-        entrada.nextLine(); // Limpar buffer
-
+    
+   ////depois de criar uma nova conta:
+   
         System.out.println("Você gostaria de fazer alguma transação nessa conta? (s/n)");
         String op = entrada.nextLine();
 
@@ -143,8 +119,6 @@ public class MenuController {
                 gerenciadorContas();
             }
         }
-        return novaConta;
-    }
 
     public static void extratoConta() {
         System.out.println("Digite o ID da conta que deseja consultar: ");
@@ -203,40 +177,21 @@ public class MenuController {
             menuGerenciadorContas();
             escolha = entrada.nextInt();
 
+            AccountOperations saque = new Saque();
+            AccountOperations deposito = new Deposito();
+            AccountOperations transferencia = new Transferencia();
+
             switch (escolha) {
-
                 case 1:
-                    System.out.println("\nInforme o ID da conta para saque:");
-                    int idContaSaque = entrada.nextInt();
-                    System.out.println("Informe o valor do saque:");
-                    double valorSaque = entrada.nextDouble();
-
-                    Conta contaSaque = ContaUtils.encontrarContaPorId(contas, idContaSaque);
-
-                    if (contaSaque != null) {
-                        FinancialOperation.sacar(contaSaque, valorSaque);
-                    } else {
-                        System.out.println("Conta não encontrada.");
-                    }
+                    saque.executar(contas, entrada);
                     break;
 
                 case 2:
-                    System.out.println("\nInforme o ID da conta para depósito:");
-                    int idContaDeposito = entrada.nextInt();
-                    System.out.println("Informe o valor do depósito:");
-                    double valorDeposito = entrada.nextDouble();
-
-                    Conta contaDeposito = ContaUtils.encontrarContaPorId(contas, idContaDeposito);
-
-                    if (contaDeposito != null) {
-                        FinancialOperation.depositar(contaDeposito, valorDeposito);
-                    } else {
-                        System.out.println("Conta não encontrada.");
-                    }
+                    deposito.executar(contas, entrada);
                     break;
 
                 case 3:
-                    transferirFundos();
+                    transferencia.executar(contas, entrada);
                     break;
                 case 4:
                     System.out.println("Você está saindo do menu de transações!");
@@ -247,47 +202,10 @@ public class MenuController {
         } while (escolha != 4);
     }
 
-    public static void transferirFundos() {
-        System.out.println("Digite o ID da conta de origem: ");
-        int idOrigem = entrada.nextInt();
-        System.out.println("Digite o ID da conta de destino: ");
-        int idDestino = entrada.nextInt();
-
-        Conta origem = null, destino = null;
-        for (Conta c : contas) {
-            if (c.getIdConta() == idOrigem)
-                origem = c;
-            if (c.getIdConta() == idDestino)
-                destino = c;
-        }
-
-        if (origem == null || destino == null) {
-            System.out.println("Uma das contas não foi encontrada.");
-            return;
-        }
-
-        System.out.println("Digite o valor da transferência: ");
-        double valor = entrada.nextDouble();
-        entrada.nextLine();
-
-        if (valor > origem.getSaldo()) {
-            System.out.println("Saldo insuficiente.");
-            return;
-        }
-
-        origem.setSaldo(origem.getSaldo() - valor);
-        destino.setSaldo(destino.getSaldo() + valor);
-
-        origem.getTransacoes().add(
-                new Transaction(0, -valor, 0, "Despesa", "Transferência", "Transferência para conta " + idDestino));
-        destino.getTransacoes()
-                .add(new Transaction(0, valor, 0, "Receita", "Transferência", "Recebido da conta " + idOrigem));
-
-        System.out.println("Transferência realizada com sucesso.");
-    }
 
     public static void painelGeral() {
         System.out.println("Aqui gerencio o painel geral");
     }
 
+}
 }
