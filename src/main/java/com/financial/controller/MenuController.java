@@ -11,6 +11,11 @@ import src.main.java.com.financial.operations.contas.AccountOperations;
 import src.main.java.com.financial.operations.contas.Deposito;
 import src.main.java.com.financial.operations.contas.Saque;
 import src.main.java.com.financial.operations.contas.Transferencia;
+import src.main.java.com.financial.operations.gerenciamento.CancelarConta;
+import src.main.java.com.financial.operations.gerenciamento.ConsultarExtrato;
+import src.main.java.com.financial.operations.gerenciamento.CriarConta;
+import src.main.java.com.financial.operations.gerenciamento.FinancialOperations;
+import src.main.java.com.financial.operations.gerenciamento.CancelarConta;
 import src.main.java.com.financial.utils.*;
 
 public class MenuController {
@@ -84,8 +89,10 @@ public class MenuController {
             menuGerenciadorContas();
             escolha = entrada.nextInt();
 
-         switch (escolha) {
+            switch (escolha) {
                 case 1:
+                    criarConta();
+                    repetirOperacaoConta();
                     criarConta();
                     repetirOperacaoConta();
                     break;
@@ -103,26 +110,30 @@ public class MenuController {
             }
         } while (escolha != 4);
     }
-    
-   ////depois de criar uma nova conta:
-   
-   public static void repetirOperacaoTransacao(){
-   
-        System.out.println("Você gostaria de fazer alguma transação nessa conta? (s/n)");
-        String op = entrada.nextLine();
 
-        if (op.equalsIgnoreCase("s")) {
-            novaTransacao();
-        } else {
-            gerenciadorContas();      
-        }
-    }
-
-    public static void criarConta(){
+    public static void criarConta() {
         FinancialOperations criarConta = new CriarConta();
         criarConta.executar(contas, entrada);
 
     }
+
+    //// depois de criar uma nova conta:
+
+   public static void repetirOperacaoTransacao(){
+   
+    System.out.println("Você gostaria de fazer alguma transação nessa conta? (s/n)");
+
+    String op = entrada.nextLine();
+
+    if(op.equalsIgnoreCase("s"))
+    {
+        novaTransacao();
+    }
+    else
+    {
+        gerenciadorContas();
+    }
+}
 
     public static void repetirOperacaoConta(){
     System.out.println("Você gostaria de cadastrar outras contas? (s/n)");
@@ -134,38 +145,19 @@ public class MenuController {
         }
     }
 
-
     public static void extratoConta() {
-        System.out.println("Digite o ID da conta que deseja consultar: ");
-        int idConta = entrada.nextInt();
 
-        Conta contaEncontrada = null;
-
-        for (Conta conta : contas) {
-            if (conta.getIdConta() == idConta) {
-                contaEncontrada = conta;
-                break;
-            }
-        }
-
-        if (contaEncontrada != null) {
-            System.out.println("Transações da conta:");
-            List<Transaction> listaTransacoes = contaEncontrada.getTransacoes();
-            if (listaTransacoes.isEmpty()) {
-                System.out.println("Essa conta ainda não tem transações.");
-            } else {
-                for (Transaction t : listaTransacoes) {
-                    System.out.println(t);
-                }
-            }
-        } else {
-            System.out.println("Conta não encontrada.");
-        }
+    FinancialOperations consultarExtrato = new ConsultarExtrato();
+    consultarExtrato.executar(contas, entrada);
+       
     }
 
     public static void cancelamento() {
-        System.out.println(
-                "O pedido de cancelamento da conta foi feito, aguarde o contato do banco para os próximos passos.");
+
+    
+    FinancialOperations cancelarConta = new CancelarConta();
+    cancelarConta.executar(contas, entrada);
+
     }
 
     public static void novaTransacao() {
@@ -217,10 +209,8 @@ public class MenuController {
         } while (escolha != 4);
     }
 
-
     public static void painelGeral() {
         System.out.println("Aqui gerencio o painel geral");
     }
 
-}
 }

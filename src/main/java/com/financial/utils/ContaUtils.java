@@ -1,13 +1,19 @@
 package src.main.java.com.financial.utils;
 
+import java.util.Scanner;
+import java.util.ArrayList;
 import java.util.List;
 
 import src.main.java.com.financial.model.Conta;
 import src.main.java.com.financial.model.Transaction;
 
+
 public class ContaUtils {
 
+    static Scanner entrada = new Scanner(System.in);
     private static int contadorContas = 0;
+    static ArrayList<Conta> contas = new ArrayList<Conta>();
+    static ArrayList<Transaction> transacoes = new ArrayList<Transaction>();
 
     public static int gerarNovoId() {
         return contadorContas++;
@@ -64,4 +70,5 @@ public class ContaUtils {
             conta.setSaldo(conta.getSaldo() - t.getValor());
         }
     }
+
 }
