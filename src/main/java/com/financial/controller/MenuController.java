@@ -84,9 +84,10 @@ public class MenuController {
             menuGerenciadorContas();
             escolha = entrada.nextInt();
 
-            switch (escolha) {
+         switch (escolha) {
                 case 1:
-                    novaConta();
+                    criarConta();
+                    repetirOperacaoConta();
                     break;
                 case 2:
                     extratoConta();
@@ -105,20 +106,34 @@ public class MenuController {
     
    ////depois de criar uma nova conta:
    
+   public static void repetirOperacaoTransacao(){
+   
         System.out.println("Você gostaria de fazer alguma transação nessa conta? (s/n)");
         String op = entrada.nextLine();
 
         if (op.equalsIgnoreCase("s")) {
             novaTransacao();
         } else {
-            System.out.println("Você gostaria de cadastrar outras contas? (s/n)");
-            String op2 = entrada.nextLine();
-            if (op2.equalsIgnoreCase("s")) {
-                novaConta();
-            } else {
-                gerenciadorContas();
-            }
+            gerenciadorContas();      
         }
+    }
+
+    public static void criarConta(){
+        FinancialOperations criarConta = new CriarConta();
+        criarConta.executar(contas, entrada);
+
+    }
+
+    public static void repetirOperacaoConta(){
+    System.out.println("Você gostaria de cadastrar outras contas? (s/n)");
+    String op2 = entrada.nextLine();
+    if (op2.equalsIgnoreCase("s")) {
+        criarConta();
+        } else {
+            repetirOperacaoTransacao();
+        }
+    }
+
 
     public static void extratoConta() {
         System.out.println("Digite o ID da conta que deseja consultar: ");
