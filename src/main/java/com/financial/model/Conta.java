@@ -6,9 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Conta {
+
     private static int contadorContas = 1;
 
-    private static int idConta;
+    private int idConta;
     private String banco;
     private int agencia;
     private int numero;
@@ -18,19 +19,31 @@ public class Conta {
     private static final NumberFormat formatoValores = new DecimalFormat("R$ #,##0.00");
 
     public Conta(String banco, int agencia, int numero) {
-        this.idConta = contadorContas++;
         this.banco = banco;
         this.agencia = agencia;
         this.numero = numero;
-        this.saldo = 0.0;
-        this.transacoes = new ArrayList<>();
     }
 
     public Conta(int contadorContas, String banco, int agencia, int numero, double saldo,
             ArrayList<Transaction> arrayList) {
+        
+        this.idConta = contadorContas++;
+        this.banco = banco;
+        this.agencia = agencia;
+        this.numero = numero;
+        this.saldo = saldo;
+        this.transacoes = new ArrayList<>();
     }
 
-    public static int getIdConta() {
+    public Conta(int contadorContas, String banco, int agencia, int numero, double saldo){
+        this.idConta = contadorContas++;
+        this.banco = banco;
+        this.agencia = agencia;
+        this.numero = numero;
+        this.saldo = saldo;
+    }
+
+    public int getIdConta() {
         return idConta;
     }
 
@@ -71,9 +84,9 @@ public class Conta {
        return transacoes;
     }
 
-    public List<Transaction> setTransacoes(List<Transaction> transacoes) {
-        return transacoes;
-    }
+    public void setTransacoes(List<Transaction> transacoes) {
+        this.transacoes = transacoes;
+}
 
         @Override
     public String toString() {

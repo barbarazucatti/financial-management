@@ -66,7 +66,6 @@ public class MenuController {
 
     public static void gerenciadorContas() {
 
-        menuGerenciadorContas();
         iniciarGerenciadorContas();
 
     }
@@ -92,9 +91,6 @@ public class MenuController {
             switch (escolha) {
                 case 1:
                     criarConta();
-                    repetirOperacaoConta();
-                    criarConta();
-                    repetirOperacaoConta();
                     break;
                 case 2:
                     extratoConta();
@@ -135,15 +131,25 @@ public class MenuController {
     }
 }
 
-    public static void repetirOperacaoConta(){
+public static void repetirOperacaoConta() {
     System.out.println("Você gostaria de cadastrar outras contas? (s/n)");
     String op2 = entrada.nextLine();
+
     if (op2.equalsIgnoreCase("s")) {
         criarConta();
+    } else {
+        System.out.println("Você gostaria de cadastrar uma nova transação nessa conta? (s/n)");
+        String op3 = entrada.nextLine();
+
+        if (op3.equalsIgnoreCase("s")) {
+            novaTransacao();
         } else {
-            repetirOperacaoTransacao();
+            System.out.println("Vamos retornar para o Menu de Gerenciamento de Contas!");
+            gerenciadorContas();
         }
     }
+}
+
 
     public static void extratoConta() {
 
@@ -212,5 +218,6 @@ public class MenuController {
     public static void painelGeral() {
         System.out.println("Aqui gerencio o painel geral");
     }
-
 }
+
+
