@@ -9,7 +9,7 @@ public class Conta {
 
     private static int contadorContas = 1;
 
-    private int idConta;
+    private static int idConta;
     private String banco;
     private int agencia;
     private int numero;
@@ -43,7 +43,7 @@ public class Conta {
         this.saldo = saldo;
     }
 
-    public int getIdConta() {
+    public static int getIdConta() {
         return idConta;
     }
 

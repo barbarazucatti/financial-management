@@ -137,7 +137,8 @@ public static void repetirOperacaoConta() {
 
     if (op2.equalsIgnoreCase("s")) {
         criarConta();
-    } else {
+     }
+
         System.out.println("Você gostaria de cadastrar uma nova transação nessa conta? (s/n)");
         String op3 = entrada.nextLine();
 
@@ -148,7 +149,6 @@ public static void repetirOperacaoConta() {
             gerenciadorContas();
         }
     }
-}
 
 
     public static void extratoConta() {
@@ -165,9 +165,9 @@ public static void repetirOperacaoConta() {
     cancelarConta.executar(contas, entrada);
 
     }
-
+//// ORGANIZAR FLUXO DO MENU A PARTIR DAQUI
+/// 
     public static void novaTransacao() {
-        menuNovaTransacao();
         iniciarNovaTransacao();
 
     }
@@ -187,7 +187,7 @@ public static void repetirOperacaoConta() {
         int escolha;
 
         do {
-            menuGerenciadorContas();
+            menuNovaTransacao();
             escolha = entrada.nextInt();
 
             AccountOperations saque = new Saque();
@@ -196,11 +196,10 @@ public static void repetirOperacaoConta() {
 
             switch (escolha) {
                 case 1:
-                    saque.executar(contas, entrada);
-                    break;
-
-                case 2:
                     deposito.executar(contas, entrada);
+                    break;
+                case 2:
+                    saque.executar(contas, entrada);
                     break;
 
                 case 3:
