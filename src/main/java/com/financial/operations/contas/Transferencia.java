@@ -38,9 +38,9 @@ public class Transferencia implements AccountOperations {
         destino.setSaldo(destino.getSaldo() + valor);
 
         origem.getTransacoes().add(
-                new Transaction(0, -valor, 0, "Despesa", "Transferência", "Transferência para conta " + idDestino));
+                new Transaction(-valor, "Despesa", "Transferência", "Transferência para conta " + idDestino));
         destino.getTransacoes()
-                .add(new Transaction(0, valor, 0, "Receita", "Transferência", "Recebido da conta " + idOrigem));
+                .add(new Transaction(valor, "Receita", "Transferência", "Recebido da conta " + idOrigem));
 
         System.out.println("Transferência realizada com sucesso.");
     }

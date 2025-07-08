@@ -1,27 +1,31 @@
 package src.main.java.com.financial.model;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class Transaction {
     private int idTransacao;
     private double valor;
-    private Date data;
+    private LocalDate data;
     private String tipo;
     private String categoria;
     private String descricao;
     private Conta conta;
+    private static int contador = 1;
+    
+    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-    public Transaction(int idTransacao, double valor, Date data, String tipo, String categoria, String descricao, Conta conta) {
-        this.idTransacao = idTransacao;
+
+
+    public Transaction(double valor, String tipo, String categoria, String descricao) {
+        this.idTransacao = contador++;
         this.valor = valor;
-        this.data = data;
         this.tipo = tipo;
         this.categoria = categoria;
         this.descricao = descricao;
-        this.conta = conta;
-    }
-
-    public Transaction(int idTransacao, double valor, int j, String tipo, String categoria, String descricao) {
+        //this.conta = conta;
+        this.data = LocalDate.now();
     }
 
     public int getIdTransacao() {
@@ -31,8 +35,8 @@ public class Transaction {
     public double getValor() {
         return valor;
     }
-
-    public Date getData() {
+    
+    public LocalDate getData() {
         return data;
     }
 
@@ -55,7 +59,11 @@ public class Transaction {
     
     @Override
     public String toString() {
-        return "Transação #" + idTransacao + " | " + tipo + " | " + categoria + " | " + descricao +
-               " | Valor: R$" + String.format("%.2f", valor) + " | Data: " + data;
+        return "Transação #" + idTransacao +
+               " | " + tipo +
+               " | " + categoria +
+               " | " + descricao +
+               " | Valor: R$" + String.format("%.2f", valor) +
+               " | Data: " + data.format(formatter);
     }
 }

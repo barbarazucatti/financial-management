@@ -1,5 +1,6 @@
 package src.main.java.com.financial.operations.gerenciamento;
 
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Scanner;
 
@@ -7,7 +8,12 @@ import src.main.java.com.financial.model.Conta;
 import src.main.java.com.financial.model.Transaction;
 import src.main.java.com.financial.utils.ContaUtils;
 
+import java.text.DecimalFormat;
+
 public class ConsultarExtrato implements FinancialOperations{
+
+    DecimalFormat formato = new DecimalFormat("R$ #,##0.00");
+
 
     @Override
     public void executar(List<Conta> contas, Scanner entrada) {
@@ -21,6 +27,7 @@ public class ConsultarExtrato implements FinancialOperations{
             List<Transaction> transacoes = contaEncontrada.getTransacoes();
             if (transacoes == null || transacoes.isEmpty()) {
                 System.out.println("Essa conta ainda não tem transações.");
+                System.out.println("Saldo: " + formato.format(contaEncontrada.getSaldo()));
             } else {
                 for (Transaction t : transacoes) {
                     System.out.println(t);

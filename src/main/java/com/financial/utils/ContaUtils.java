@@ -44,6 +44,8 @@ public class ContaUtils {
         if (valor > 0) {
             conta.setSaldo(conta.getSaldo() + valor);
             System.out.println("Depósito realizado com sucesso.");
+            conta.getTransacoes().add(
+            new Transaction(valor, "Receita", "Depósito", "Depósito realizado com sucesso"));
         } else {
             System.out.println("Valor inválido para depósito.");
         }
