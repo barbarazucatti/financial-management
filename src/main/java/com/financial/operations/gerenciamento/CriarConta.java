@@ -10,7 +10,7 @@ import src.main.java.com.financial.model.Transaction;
 import src.main.java.com.financial.utils.ContaUtils;
 
 public class CriarConta implements FinancialOperations {
-    
+
     static ArrayList<Conta> contas = new ArrayList<Conta>();
 
     @Override

@@ -24,8 +24,7 @@ public class Conta {
         this.numero = numero;
     }
 
-    public Conta(int contadorContas, String banco, int agencia, int numero, double saldo,
-            ArrayList<Transaction> arrayList) {
+    public Conta(int contadorContas, String banco, int agencia, int numero, double saldo) {
         
         this.idConta = contadorContas++;
         this.banco = banco;
@@ -33,14 +32,6 @@ public class Conta {
         this.numero = numero;
         this.saldo = saldo;
         this.transacoes = new ArrayList<>();
-    }
-
-    public Conta(int contadorContas, String banco, int agencia, int numero, double saldo){
-        this.idConta = contadorContas++;
-        this.banco = banco;
-        this.agencia = agencia;
-        this.numero = numero;
-        this.saldo = saldo;
     }
 
     public static int getIdConta() {

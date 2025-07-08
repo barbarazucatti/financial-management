@@ -19,7 +19,7 @@ public class ConsultarExtrato implements FinancialOperations{
         if (contaEncontrada != null) {
             System.out.println("Transações da conta:");
             List<Transaction> transacoes = contaEncontrada.getTransacoes();
-            if (transacoes.isEmpty()) {
+            if (transacoes == null || transacoes.isEmpty()) {
                 System.out.println("Essa conta ainda não tem transações.");
             } else {
                 for (Transaction t : transacoes) {
