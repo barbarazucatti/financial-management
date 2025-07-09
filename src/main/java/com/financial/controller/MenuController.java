@@ -9,6 +9,7 @@ import src.main.java.com.financial.model.*;
 import src.main.java.com.financial.operations.*;
 import src.main.java.com.financial.operations.contas.AccountOperations;
 import src.main.java.com.financial.operations.contas.Deposito;
+import src.main.java.com.financial.operations.contas.Mesclar;
 import src.main.java.com.financial.operations.contas.Saque;
 import src.main.java.com.financial.operations.contas.Transferencia;
 import src.main.java.com.financial.operations.gerenciamento.CancelarConta;
@@ -75,7 +76,8 @@ public class MenuController {
         System.out.println("        [1] Criar uma nova conta");
         System.out.println("        [2] Consultar um extrato");
         System.out.println("        [3] Cancelar conta");
-        System.out.println("        [4] Sair");
+        System.out.println("        [4] Mesclar contas");
+        System.out.println("        [5] Sair");
         System.out.println();
         System.out.println("        O que você gostaria de fazer? ");
     }
@@ -98,6 +100,8 @@ public class MenuController {
                     cancelamento();
                     break;
                 case 4:
+                    mesclarContas();
+                case 5:
                     System.out.println("Você está saindo do Gerenciador de Finanças!");
                     break;
                 default:
@@ -164,8 +168,13 @@ public static void repetirOperacaoConta() {
     cancelarConta.executar(contas, entrada);
 
     }
-//// ORGANIZAR FLUXO DO MENU A PARTIR DAQUI
-/// 
+
+    public static void mesclarContas(){
+    AccountOperations mesclar = new Mesclar();
+    mesclar.executar(contas, entrada);
+
+    }
+
     public static void novaTransacao() {
         iniciarNovaTransacao();
 
