@@ -11,7 +11,7 @@ import src.main.java.com.financial.utils.ContaUtils;
 
 public class CriarConta implements FinancialOperations {
 
-    static ArrayList<Conta> contas = new ArrayList<Conta>();
+    ArrayList<Conta> contas = new ArrayList<Conta>();
 
     @Override
     public void executar(List<Conta> contas, Scanner entrada) {
@@ -31,7 +31,8 @@ public class CriarConta implements FinancialOperations {
         int numero = entrada.nextInt();
         entrada.nextLine();
 
-        int novoId = ContaUtils.gerarNovoId();
+        ContaUtils utils = new ContaUtils();
+        int novoId = utils.gerarNovoId();
         Conta novaConta = new Conta(novoId, banco, agencia, numero, 0);
         ContaUtils.adicionarConta(contas, novaConta);
         

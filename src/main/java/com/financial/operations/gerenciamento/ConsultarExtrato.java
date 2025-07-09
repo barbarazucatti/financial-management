@@ -20,6 +20,7 @@ public class ConsultarExtrato implements FinancialOperations{
         System.out.println("Digite o ID da conta que deseja consultar: ");
         int idConta = entrada.nextInt();
 
+           ///arrumar a questão do static
         Conta contaEncontrada = ContaUtils.encontrarContaPorId(contas, idConta); // <-- usando o seu método
 
         if (contaEncontrada != null) {

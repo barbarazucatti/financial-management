@@ -15,7 +15,7 @@ public class ContaUtils {
     static ArrayList<Conta> contas = new ArrayList<Conta>();
     static ArrayList<Transaction> transacoes = new ArrayList<Transaction>();
 
-    public static int gerarNovoId() {
+    public int gerarNovoId() {
         return contadorContas++;
     }
 
@@ -23,9 +23,10 @@ public class ContaUtils {
     contas.add(novaConta);
     }
 
+       ///arrumar a questão do static
     public static Conta encontrarContaPorId(List<Conta> contas, int id) {
     for (Conta conta : contas) {
-        if (Conta.getIdConta() == id) {
+        if (conta.getIdConta() == id) {
             return conta;
         }
     }

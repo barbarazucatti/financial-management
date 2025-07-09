@@ -16,6 +16,7 @@ public class CancelarConta implements FinancialOperations{
     int idConta = entrada.nextInt();
     entrada.nextLine();
 
+    ///arrumar a questão do static
     Conta contaEncontrada = ContaUtils.encontrarContaPorId(contas, idConta);
 
     System.out.println("Você tem certeza que deseja cancelar a conta " + idConta + "? (s/n)");

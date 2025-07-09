@@ -23,7 +23,6 @@ public class MenuController {
     static Scanner entrada = new Scanner(System.in);
     static ArrayList<Conta> contas = new ArrayList<Conta>();
     static ArrayList<Transaction> transacoes = new ArrayList<Transaction>();
-
     static int contadorContas = 1;
     static int contadorTransacoes = 1;
 
@@ -108,8 +107,6 @@ public class MenuController {
     }
 
     public static void criarConta() {
-
-
         FinancialOperations criarConta = new CriarConta();
         criarConta.executar(contas, entrada);
 
