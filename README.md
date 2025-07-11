@@ -7,7 +7,7 @@ The program simulates a personal financial management system where the user can:
 
 - Navigate between accounts in different banks;
 - View, edit, and conduct transactions;
-- Track expenses and income by category and time period.
+- Track expenses and income by category and time period;
 
 ## 📂 Interactive Menu
 The interaction is carried out via an interactive command-line menu, allowing the user to select an action and be redirected to specific menus with more options.
