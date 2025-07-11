@@ -4,6 +4,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
 import java.text.SimpleDateFormat;
+import javax.naming.directory.ModificationItem;
 
 import src.main.java.com.financial.model.*;
 import src.main.java.com.financial.operations.*;
@@ -16,7 +17,8 @@ import src.main.java.com.financial.operations.gerenciamento.CancelarConta;
 import src.main.java.com.financial.operations.gerenciamento.ConsultarExtrato;
 import src.main.java.com.financial.operations.gerenciamento.CriarConta;
 import src.main.java.com.financial.operations.gerenciamento.FinancialOperations;
-import src.main.java.com.financial.operations.gerenciamento.CancelarConta;
+import src.main.java.com.financial.operations.transacao.Modification;
+
 import src.main.java.com.financial.utils.*;
 
 public class MenuController {
@@ -103,6 +105,7 @@ public class MenuController {
                     mesclarContas();
                 case 5:
                     System.out.println("Você está saindo do Gerenciador de Finanças!");
+                    menuPrincipal();
                     break;
                 default:
                     System.out.println("Digite uma opção válida");
@@ -186,7 +189,8 @@ public static void repetirOperacaoConta() {
         System.out.println("        [1] Depositar");
         System.out.println("        [2] Sacar");
         System.out.println("        [3] Transferir fundos");
-        System.out.println("        [4] Sair");
+        System.out.println("        [4] Editar transação");
+        System.out.println("        [5] Sair");
         System.out.println();
         System.out.println("        O que você gostaria de fazer? ");
     }
@@ -214,7 +218,10 @@ public static void repetirOperacaoConta() {
                     transferencia.executar(contas, entrada);
                     break;
                 case 4:
+                    modification.executar(contas,entrada);
+                case 5:
                     System.out.println("Você está saindo do menu de transações!");
+                    menuPrincipal();
                     break;
                 default:
                     System.out.println("Digite uma opção válida");

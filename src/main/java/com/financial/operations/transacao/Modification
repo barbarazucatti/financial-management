@@ -1,0 +1,52 @@
+package src.main.java.com.financial.operations.transacao;
+
+import java.util.List;
+import java.util.Scanner;
+
+public class Modification implements TransactionOperations {
+
+@Override
+
+public void executar(List<Conta> contas, Scanner entrada) {
+
+    System.out.println("Digite o ID da conta que deseja editar: ");
+    int idConta = entrada.nextInt();
+
+    Conta conta = ContaUtils.encontrarContaPorId(contas, idConta);
+
+      if (conta == null) {
+        System.out.println("Conta não encontrada.");
+        return;
+    }
+
+    List<Transaction> transacoes = conta.getTransacoes();
+
+    if (transacoes == null || transacoes.isEmpty()) {
+        System.out.println("A conta não possui transações para editar.");
+        return;
+    }
+
+    Transaction lastTransaction = transacoes.get(transacoes.size() - 1)
+
+    System.out.println("Essas são os valores da ultima transação:" + lastTransaction);
+    entrada.nextLine();
+    System.out.println("Digite o novo valor:");
+    int valor = entrada.nextInt();
+    System.out.println("Digite o tipo de transação:");
+    int tipo = entrada.nextLine();
+    System.out.println("Digite a categoria da transação:r");
+    int categoria = entrada.nextLine();
+    System.out.println("Digite a descrição da transação:r");
+    int descricao = entrada.nextLine();
+
+    selastTransaction.setValor(valor);
+    lastTransaction.setTipo(tipo);
+    lastTransaction.setCategoria(categoria);
+    lastTransaction.setDescricao(descricao);
+
+    System.out.println("Transação atualizada com sucesso!");
+    System.out.println(lastTransaction);
+}
+
+
+}

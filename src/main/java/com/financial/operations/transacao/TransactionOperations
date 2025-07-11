@@ -1,0 +1,10 @@
+package src.main.java.com.financial.operations.transacao;
+
+import java.util.List;
+import java.util.Scanner;
+
+import src.main.java.com.financial.model.Conta;
+
+public interface TransactionOperations {
+void executar(List<Conta> contas, Scanner entrada);
+}
